@@ -1,7 +1,7 @@
 (defproject com.ozjongwon/pgxjdbc "0.1.0-SNAPSHOT"
   :author "Jong-won Choi"
   :description "Clojure JDBC type conversion extension for PostgreSQL"
-  :url "https://github.com/pgxjdbc/"
+  :url "https://github.com/ozjongwon/pgxjdbc/"
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo
