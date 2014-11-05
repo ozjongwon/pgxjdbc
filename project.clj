@@ -12,6 +12,7 @@
   :dependencies [[org.clojure/clojure         "1.6.0"]
                  [org.clojure/java.jdbc "0.3.6"]
                  [org.postgresql/postgresql "9.3-1102-jdbc41"]
+                 [c3p0/c3p0 "0.9.1.2"]
                  [cheshire "5.3.1"]]
   :profiles
   {:dev {:plugins [[lein-ancient "0.5.5"]
