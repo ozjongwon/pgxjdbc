@@ -140,11 +140,17 @@
      (binding [*db-conn* con#]
        ~@body)))
 
+(defmacro unwind-protect [protected-form & cleanup-form]
+  `(try
+     ~protected-form
+     (finally
+      ~@cleanup-form)))
+
 (defmacro with-schema [[schema & {:keys [strict] :or {strict false}}] & body]
   `(let [original-schema# (get-search-path)]
-     (util/unwind-protect (do (set-search-path (if ~strict ~schema (str ~schema ",public")))
-                              ~@body)
-                          (set-search-path original-schema#))))
+     (unwind-protect (do (set-search-path (if ~strict ~schema (str ~schema ",public")))
+                         ~@body)
+                     (set-search-path original-schema#))))
 
 (def ^:dynamic *inside-transaction?* false)
 
