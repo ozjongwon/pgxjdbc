@@ -14,14 +14,21 @@ Add the necessary dependency to your [Leiningen][] `project.clj` and `require` t
 ```clojure
 [com.ozjongwon/pgxjdbc "0.1.0-SNAPSHOT"]              ; project.clj
 
-(ns my-app (:require [ozjongwon.pgxjdbc]))
+(ns my-app (:require [ozjongwon.pgxjdbc :as jdbc]))
 ```
 
 ## Usage
 For INSERT and UPDATE, "::json" is required:
 
 ```clojure
-(jdbc/execute! db-spec ["insert into site (timezone, locale, name, data) values (?,?,?,?::json)" :aus/nsw :en_AU "new name" false])
+(jdbc/with-db-connection
+   (jdbc/with-schema ["test1"]
+      (jdbc/with-transaction
+	 (jdbc/execute! ["insert into site (timezone, locale, name, data) values (?,?,?,?::json)" :aus/nsw :en_AU "new name12" false]))))
+
+(jdbc/with-db-connection
+   (jdbc/with-schema ["test1"]
+      (jdbc/query ["select * from site where timezone = ?" :aus/nsw])))
 ```
 
 ## License
