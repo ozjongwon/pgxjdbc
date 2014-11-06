@@ -1,7 +1,7 @@
 # pgxjdbc, a Clojure JDBC extension for PostgreSQL (JSON)
 
-After playing with DynamoDB for a while, I learnt limitations of NoSQL and return back to trusty PostgreSQL.
-I couldn't satisfy with any of existing Clojure SQL libraries and decided to use the plain JDBC library.
+After playing with DynamoDB for a while, I learnt limitations of NoSQL and returned back to trusty PostgreSQL.
+I couldn't be satisfied with any of existing Clojure SQL libraries and decided to use the plain JDBC library.
 
 Being a JDBC library, org.clojure/java.jdbc does not support PostgreSQL's extensions like JSON, but its design is easy to make changes by redefining three protocols.
 
